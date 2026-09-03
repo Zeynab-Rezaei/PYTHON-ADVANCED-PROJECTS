@@ -1,0 +1,39 @@
+#import and global variables
+import random
+
+USER_CHOICES = ("rock", "paper", "scissor")
+
+#create a function to  get user input
+def get_user_input():
+    choice = input("pick your choice (rock , paper , scissor): ")
+    while choice not in USER_CHOICES:
+        choice = input("pick your choice (rock , paper , scissor): ")
+    return choice
+#create a function to get pc input
+def get_pc_input():
+    pc_choice = random.choice(USER_CHOICES)
+    print(f"computer choice was:{pc_choice}")
+    return pc_choice
+
+#compare and determine which one is the winner
+def determine_winner(user_input, pc_input):
+    if user_input == pc_input:
+        return print("DRAW!")
+    elif (user_input == "paper" and pc_input == "rock")\
+            or (user_input == "scissor" and pc_input == "paper")\
+            or (user_input == "rock" and pc_input == "scissor"):
+        print("good job.\nyou won.")
+    else:
+        print("computer won.")
+#create a main function as the runner 
+def main():
+    user_input = get_user_input()
+    pc_input = get_pc_input()
+    determine_winner(user_input, pc_input)
+    print("end of programe.")
+
+#make an iteration for doing the game as much as we need    
+answer = 'y'
+while answer == "y":
+    main()
+    answer = input("do you want to conrtinue? (y/n):")
